@@ -21,6 +21,7 @@ public class MiniCasinoMain extends JFrame{
 	private int res = 0;
 	
 	public MiniCasinoMain() {
+		super("미니 카지노");
 		setSize(800,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);

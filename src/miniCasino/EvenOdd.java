@@ -116,7 +116,7 @@ public class EvenOdd extends JFrame{
 		lblName.setBounds(12, 252, 57, 29);
 		panel_1.add(lblName);
 		
-		lblName_ = new JLabel("성명");
+		lblName_ = new JLabel(dao.getName(id));
 		lblName_.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName_.setBounds(71, 252, 113, 29);
 		panel_1.add(lblName_);
@@ -126,7 +126,7 @@ public class EvenOdd extends JFrame{
 		lblID.setBounds(12, 285, 57, 29);
 		panel_1.add(lblID);
 		
-		lblID_ = new JLabel("아이디");
+		lblID_ = new JLabel(id);
 		lblID_.setHorizontalAlignment(SwingConstants.CENTER);
 		lblID_.setBounds(71, 285, 113, 29);
 		panel_1.add(lblID_);
@@ -179,6 +179,10 @@ public class EvenOdd extends JFrame{
 		
 		btnGameStart = new JButton("게임시작");
 		btnGameStart.setFont(new Font("굴림", Font.BOLD, 20));
+		
+		
+		
+//		==========위는 UI생성 아래는 메소드 영역=====================================================================
 		btnGameStart.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				vo = dao.getInfo(id);	//dao에서 회원정보 vo로 받아오기
@@ -188,7 +192,7 @@ public class EvenOdd extends JFrame{
 					betting = Integer.parseInt( txtBet.getText());  //배팅금액 //텍스트 필드에서 뽑아오기
 					if((int)(betting*vo.getDiscnt()) > vo.getCash())
 					{
-						JOptionPane.showMessageDialog(null, "vip등급 "+vo.getGrade()+"\n할인율"+(1-vo.getDiscnt())*100+"%가 적용된\n"+(int)(betting*vo.getDiscnt())+"원을 소지하고 있지 않습니다.\n 확인 or 충전후 사용해주세요.");
+						JOptionPane.showMessageDialog(null, "vip등급 "+vo.getGrade()+"\n할인율"+Math.round((1-vo.getDiscnt())*100)+"%가 적용된\n"+(int)(betting*vo.getDiscnt())+"원을 소지하고 있지 않습니다.\n 확인 or 충전후 사용해주세요.");
 					}
 					else {
 						System.out.println(betting);

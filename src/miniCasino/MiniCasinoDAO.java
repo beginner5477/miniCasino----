@@ -44,5 +44,40 @@ public class MiniCasinoDAO extends DBConn{
 		}
 		return cash;
 	}
+
+	public int setCharge(String id,int charge) {
+		int res = 0;
+		try {
+			sql = "update cstInfo set cash = cash + ? where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, charge);
+			pstmt.setString(2, id);
+			res = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public String getName(String id) {
+		String name = "";
+		try {
+			sql = "select name from cstInfo where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				name = rs.getString("name");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			rsClose();
+		}
+		return name;
+	}
 	
 }

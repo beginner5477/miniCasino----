@@ -19,6 +19,7 @@ public class MiniCasinoMenu extends JFrame{
 	private JButton btnCharge;
 	
 	public MiniCasinoMenu(String id) {
+		super("메뉴창");
 		setSize(800,600);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -85,7 +86,7 @@ public class MiniCasinoMenu extends JFrame{
 		lblName.setBounds(0, 297, 57, 29);
 		pn3.add(lblName);
 		
-		lblName_ = new JLabel("성명");
+		lblName_ = new JLabel(dao.getName(id));
 		lblName_.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName_.setBounds(59, 297, 113, 29);
 		pn3.add(lblName_);
@@ -124,7 +125,13 @@ public class MiniCasinoMenu extends JFrame{
 			}
 		});
 		
-		
+		//캐쉬충전 버튼
+		btnCharge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				new MiniCasinoCharge(id);
+			}
+		});
 		setVisible(true);
 	}
 //	public static void main(String[] args) {

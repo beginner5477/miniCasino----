@@ -105,4 +105,23 @@ public class EvenOddDAO extends DBConn{
 		}
 		return cash;
 	}
+	
+	public String getName(String id) {
+		String name = "";
+		try {
+			sql = "select name from cstInfo where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+			{
+				name = rs.getString("name");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			rsClose();
+		}
+		return name;
+	}
 }

@@ -17,7 +17,7 @@ desc cstInfo;
 desc level;
 select * from cstInfo;
 select * from level;
-insert into cstInfo values(default,'김도','okm5477','ehdhks5477@',0,0,'A');
+insert into cstInfo values(default,'김dhdhdhdd완','okm5477','ehdhks5477@',0,0,'A');
 update cstInfo set payed = payed + 2000 where id = 'okm5477';
 update cstInfo set payed = 0 where id = 'okm5477';
 delete  from cstInfo;
